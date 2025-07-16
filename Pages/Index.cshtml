@@ -1,0 +1,30 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Acortador de URLs súper simple</h1>
+    <p>Pega tu URL larga abajo y obtén una más corta.</p>
+
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <form method="post">
+                <div class="input-group mb-3">
+                    <input asp-for="LongUrl" type="url" class="form-control" placeholder="https://tu-url-muy-larga.com/" required />
+                    <button class="btn btn-primary" type="submit">Acortar</button>
+                </div>
+            </form>
+
+            @if (Model.NewUrl != null)
+            {
+                <div class="alert alert-success mt-3">
+                    <span>¡URL creada! Aquí la tienes:</span>
+                    <br />
+                    <a href="@Model.NewUrl.ShortCode" target="_blank"><strong>@Model.NewUrl.ShortCode</strong></a>
+                </div>
+            }
+        </div>
+    </div>
+</div>
